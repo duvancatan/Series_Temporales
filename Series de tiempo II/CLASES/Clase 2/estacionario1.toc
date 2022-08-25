@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {spanish}
+\beamer@sectionintoc {1}{Conceptos}{3}{0}{1}
+\beamer@sectionintoc {2}{Modelos para Series de Tiempo}{23}{0}{2}
+\beamer@sectionintoc {3}{Identificaci\'on de Modelos}{24}{0}{3}
+\beamer@sectionintoc {4}{Estimaci\'on de Par\'ametros}{25}{0}{4}
+\beamer@sectionintoc {5}{Pron\'ostico}{26}{0}{5}

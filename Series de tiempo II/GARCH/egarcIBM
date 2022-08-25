@@ -1,0 +1,16 @@
+
+
+library(rgarch)
+
+# lectura de los datos
+(ibm = ts(scan("/media/Universidad/Maestría César/Tercer semestre/Series de tiempo II/Datos Libro Tsay/m-ibm2697.txt")))
+
+ibm=as.vector(ibm)
+
+# estimación de un modelo AR(1)-EGARCH(1,1)
+spec2=ugarchspec(variance.model=list(model="eGARCH", 
+garchOrder=c(1,1)),mean.model=list(armaOrder=c(1,0),
+include.mean=TRUE),distribution.model="norm")
+
+fit1=ugarchfit(spec=spec2, data=ibm)
+fit1

@@ -1,0 +1,49 @@
+
+datos <- read.table("/media/Universidad/Maestría César/Tercer semestre/Series de tiempo II/Datos Libro Tsay/m-ibmspln.txt")
+
+names(datos) <- c("ibm", "sp500")
+
+library(vars)
+
+VARselect(datos, lag.max = 6, type = "const")
+
+res <- VAR(datos, p = 3, type = "const")
+
+names(res)
+
+res$varresult
+head(res$datamat)
+head(res$y)
+res$type
+res$p
+res$K
+res$obs
+res$totobs
+res$restrictions
+res$call
+
+coef(res)
+
+summary(res)
+
+logLik(res)
+
+head(residuals(res))
+
+plot(res)
+
+qqnorm(residuals(res)[,1]);qqline(residuals(res)[,1])
+qqnorm(residuals(res)[,2]);qqline(residuals(res)[,2])
+plot(x=residuals(res)[,1], y=residuals(res)[,2])
+
+library(car)
+dataEllipse(x=residuals(res)[,1], y=residuals(res)[,2])
+
+normality.test(res)
+plot(normality.test(res))
+
+fitted(res)
+
+predict(res, n.ahead = 6)
+plot(predict(res, n.ahead = 6))
+

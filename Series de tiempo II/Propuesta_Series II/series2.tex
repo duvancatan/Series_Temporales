@@ -1,0 +1,243 @@
+\documentclass[12pt,twoside,a4paper]{book}
+\usepackage{ucs}
+\usepackage[latin1,applemac]{inputenc} %Mac
+%\usepackage[utf8x]{inputenc} % Linux
+%\usepackage[latin1]{inputenc} %Windows
+\usepackage[T1]{fontenc}
+\usepackage[portuges,brazil,brazilian]{babel}
+\usepackage[pdftex]{graphicx}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{makeidx}
+\usepackage[nottoc]{tocbibind}
+\usepackage{courier}
+\usepackage{type1cm}
+\usepackage{listings}
+\usepackage{titletoc}
+\usepackage{afterpage,mathrsfs}
+\usepackage{latexsym,amssymb,amsmath,bbm,amsxtra,amstext}
+\usepackage{palatino}
+\usepackage{pstricks,pst-node}
+\usepackage{amsfonts,epsfig,multicol,anysize}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{calrsfs}
+\usepackage{multirow}
+\usepackage[fixlanguage]{babelbib}
+\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+%\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage[a4paper,top=3.54cm,bottom=3.0cm,left=2.54cm,right=2.54cm]{geometry} 
+\usepackage{cite}
+\usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black,filecolor=black,bookmarksopen=true]{hyperref} 
+
+
+
+%\usepackage[footnotesize]{caption}
+%\usepackage{ragged2e}
+%\usepackage{multirow}
+%\usepackage[pdftex]{graphicx}
+%\usepackage[left=2.5cm,top=2cm,right=2.5cm,bottom=2.5cm]{geometry}
+%\usepackage[latin1]{inputenc}
+%\usepackage{amsmath} %Para referencia eqref()
+%\usepackage[portuguese]{babel}
+%\usepackage{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+%\geometry{a4paper} % or letter or a5paper or ... etc
+% \geometry{landscape} % rotated page geometry
+
+
+
+
+\thispagestyle{empty} 
+
+\usepackage[all]{hypcap}
+%\bibpunct{(}{)}{;}{a}{\hspace{-0.7ex},}{,} % estilo de citaÔøΩÔøΩo. Veja 
+\usepackage[square,comma,numbers]{natbib}
+\bibliographystyle{IEEEtran}
+
+
+\fontsize{60}{62}\usefont{OT1}{cmr}{m}{n}{\selectfont}
+
+
+
+
+
+\usepackage{amsmath} 
+\usepackage{soul} 
+\usepackage{color} 
+\usepackage{amssymb} 
+
+\def\tr{\mathop{\rm tr}\nolimits}
+\def\diag{\mathop{\rm diag}\nolimits}
+\def\tr{\mathop{\rm tr}\nolimits}
+\def\rank{\mathop{\rm rank}\nolimits}
+\def\vec{\mathop{\rm vec}\nolimits}
+\def\vecp{\mathop{\rm vecp}\nolimits}
+\def\vol{\mathop{\rm Vol}\nolimits}
+\def\etr{\mathop{\rm etr}\nolimits}
+%\def\Rel{\mathop{\rm Re}\nolimits}
+\def\cov{\mathop{\rm cov}\nolimits}
+\def\corr{\mathop{\rm corr}\nolimits}
+\def\func #1{\mathop{\rm #1}\nolimits}%
+\def\blackbox{\ \rule{0.5em}{0.5em}}
+
+
+\def\r{\mathds{R}}
+\def\R{\mathbb{R}}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+% ---------------------------------------------------------------------------- %
+% CabeÔøΩalhos similares ao TAOCP de Donald E. Knuth
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{#1}}{}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\thesection}{\@arabic\c@section}
+% ---------------------------------------------------------------------------- %
+
+\renewcommand*\thesection{\arabic{section}}
+\renewcommand*\thesubsection{\arabic{subsection}}
+%\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\graphicspath{{./figuras/}}  
+\frenchspacing               
+\urlstyle{same}
+\makeindex
+\raggedbottom
+\fontsize{60}{62}\usefont{OT1}{cmr}{m}{n}{\selectfont}
+\cleardoublepage
+\normalsize
+
+
+\lstset{
+language=Java,
+basicstyle=\footnotesize,
+numbers=left,
+numberstyle=\footnotesize,
+stepnumber=1,
+numbersep=5pt,
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+frame=single,
+framerule=0.6pt,
+tabsize=2,
+captionpos=b,
+breaklines=true,
+breakatwhitespace=false,
+escapeinside={\%*}{*)},
+backgroundcolor=\color[rgb]{1.0,1.0,1.0},
+rulecolor=\color[rgb]{0.8,0.8,0.8},
+extendedchars=true,
+xleftmargin=10pt,
+xrightmargin=10pt,
+framexleftmargin=10pt,
+framexrightmargin=10pt
+}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}{Proposição}[section]
+\newtheorem{definition}{Definição}[section]
+\newtheorem{corollary}{Corolário}[theorem]
+\newtheorem{lemma}{Lema}[section]
+\newtheorem{example}{Exemplo}[section]
+\newtheorem{observation}{Observação}[section]
+\newtheorem{algorithm}{Algoritmo}[section]
+\newtheorem{remark}{Nota}[section]
+
+\providecommand{\n}[1]{{\boldsymbol{#1}}}
+\newcommand{\e}{\mbox{E}\ell} % el√≠ptica
+\newcommand{\mb}{\mbox{BCE}\ell} % Box-Cox el√≠ptica
+\newcommand{\mbn}{\mbox{BCN}} % Box-Cox normal
+\newcommand{\mbt}{{\mbox{BC}}{\it{t}}} % Box-Cox t
+\newcommand{\te}{\mbox{TE}\ell} % truncada el√≠ptica
+\newcommand{\ten}{\mbox{TN}} % truncada normal 
+\newcommand{\tet}{{\mbox{T}}{\it t}} % truncada t
+\newcommand{\esf}{\mbox{S}} % esf√©rica
+\newcommand{\bcs}{\mbox{BCS}} % Box-Cox sim√©trica
+\newcommand{\ls}{\mbox{LS}} % log-sim√©trica
+\newcommand{\tesf}{\mbox{TS}} % truncada esf√©rica
+\newcommand{\lel}{\mbox{LE}\ell} % log-el√≠ptica
+
+
+
+\begin{document}
+\frontmatter 
+% cabeÔøΩalho para as pÔøΩginas das seÔøΩÔøΩes anteriores ao capÔøΩtulo 1 (frontmatter)
+\fancyhead[LE]{{\footnotesize\rightmark}\hspace{2em}\thepage}
+\setcounter{tocdepth}{2}
+%\fancyhead[LE]{\thepage\hspace{2em}\footnotesize{\leftmark}}
+%\fancyhead[RE,LO]{}
+%\fancyhead[RO]{{\footnotesize\rightmark}\hspace{2em}\thepage}
+
+%\onehalfspacing  % espaÔøΩamento
+
+% ---------------------------------------------------------------------------- %
+% CAPA
+% Nota: O tÔøΩtulo para as dissertaÔøΩÔøΩes/teses do IME-USP devem caber em um 
+% orifÔøΩcio de 10,7cm de largura x 6,0cm de altura que hÔøΩ na capa fornecida pela SPG.
+\thispagestyle{empty}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{udea.png}
+\end{figure}
+
+\begin{center}
+    \vspace*{1cm}
+    \textbf{\LARGE{Universidad de Antioquia}}\\
+    
+    \vspace*{1cm}
+    \textbf{\Large{Instituto de Matemáticas}}
+    
+    \vskip 2cm
+    \Large{\textsc{
+    Propuesta del curso \\
+    Series de Tiempo II\\
+    como electiva del Pregrado en Estadística\\[-0.25cm]}}
+    
+    
+     \vspace{1.5cm}
+    \textbf{\Large{Duván Humberto Cataño Salazar}}
+    
+    \Large{Docente ocasional}\\
+    
+    
+    \vskip 2cm
+    \normalsize{Medellín, 2018-2}
+\end{center}
+
+%\tableofcontents
+
+%\listoftables  
+
+%\mainmatter
+
+%\fancyhead[RE,LO]{\thesection}
+
+%\singlespacing 
+%\onehalfspacing 
+
+%\input glosario
+\input introducao
+%\input objetivos
+%\input elipticas
+%t\input elipticas-truncadas
+%\input box-cox-elipticas
+%\input aplicacao
+%\input discussao
+
+\renewcommand{\sectionmark}[1]{\markboth{\MakeUppercase{\appendixname\ \thesection}} {\MakeUppercase{#1}} }
+\fancyhead[RE,LO]{}
+%\appendix
+%\include{apendice}
+%\include{Bib}
+
+\backmatter \singlespacing   
+%\bibliography{referencias} 
+
+
+\end{document}

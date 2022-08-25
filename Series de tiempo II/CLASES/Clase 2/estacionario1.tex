@@ -1,0 +1,665 @@
+
+% Este documento LaTeX fue diseñado por profesores  del Departamento de Matemáticas 
+% de la Universidad de Antioqua (http://ciencias.udea.edu.co/). Usted puede modificarlo
+% y personalizarlo a su gusto bajo los términos de la licencia de documentación libre GNU.
+% http://es.wikipedia.org/w/index.php?title=Licencia_de_documentaci%C3%B3n_libre_de_GNU&oldid=15717448
+
+\documentclass[serif,9pt]{beamer}
+
+\usetheme{Boadilla}
+
+%\documentclass[serif,9pt]{beamer}
+%\usepackage[T1]{fontenc} % Needed for Type1 Concrete
+%\usepackage[charter]{mathdesign}
+\usepackage[footnotesize]{caption}
+\usepackage{ragged2e}
+%\usepackage[pdftex]{graphicx}
+
+\usepackage[latin1,applemac]{inputenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+
+\begin{document}
+\title[UdeA]{SERIES DE TIEMPO II}  
+\author[]{Duv‡n Cata–o}
+\institute[Procesos Estacionarios]{}%{%
+  %Departamento de Matemáticas\\
+  %Universidad de Antioquia}
+\date[Duv‡n Cata–o]{UNIVERSIDAD DE ANTIOQUIA \\
+      Instituto de Matem‡ticas \\
+      2018-2}
+
+\logo{\includegraphics[scale=0.4]{logoudea}}
+
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Contenido}\tableofcontents
+\end{frame} 
+
+
+
+
+\section{Conceptos} 
+
+\begin{frame}\frametitle{Conceptos} 
+\begin{block}{Proceso Estoc‡stico}
+\begin{itemize}
+\item Un proceso estoc‡stico es una familia de variables aleatorias $Z(\omega,t)$, donde $\omega$ pertenece al espacio muestral y $t$ a un conjunto ’ndice (generalmente $\mathbb{Z}$).
+
+\medskip
+
+\item Para $\omega$ fijo, $Z(\omega,t)$, como funci—n de $t$, es una realizaci—n del proceso estoc‡stico. As’ una serie de tiempo es una realizaci—n de un cierto proceso estoc‡stico.
+
+\medskip
+
+\item Para un conjunto finito de v.a. $\{Z_{t_1} , Z_{t_2},\ldots, Z_{t_n}\}$ de un proceso estoc‡stico $\{Z(\omega, t) : t \in \mathbb{Z}\}$, se define la funci—n de distribuci—n $n-$dimensional como
+
+\medskip
+
+$$F(z_{t_1},\ldots,z_{t_n})=\mathbb{P}[z(\omega,t_1)\leq z_{t_1}, \ldots, z(\omega,t_n)\leq z_{t_n}]$$
+\end{itemize}
+\end{block}
+\begin{figure}
+\includegraphics[scale=0.3]{proces.jpg} 
+%\caption{show an example picture}
+\end{figure}
+
+\end{frame}
+
+
+
+%\begin{block}{title of the bloc}
+%bloc text
+%\end{block}
+
+%\begin{alertblock}{title of the bloc}
+%bloc text
+%\end{alertblock}
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Proceso Estacionario}
+\begin{itemize}
+\item Un proceso se dice estacionario en distribuci—n de $n-$Žsimo orden si su funci—n de distribuci—n $n-$dimensional es
+\begin{equation}\label{estac}
+F(z_{t_1},\ldots,z_{t_n}) = F(z_{t_1+k},\ldots,z_{t_n+k}) 
+\end{equation}
+para cualquier $n-$tupla $(t_1, \ldots, t_n)$ y $k\in\mathbb{Z}$.
+
+\bigskip
+
+\item Un proceso se dice \textbf{Estrictamente Estacionario} si (\ref{estac}) es cierto para cualquier $n\in\mathbb{N}$. Adem‡s si (\ref{estac}) se cumple para $n = m$, entonces tambiŽn se cumple para $n \leq m.$
+
+\medskip
+
+\item Un ejemplo inmediato de un proceso estoc‡stico estrictamente estacionario lo constituye una sucesi—n de variables aleatorias i.i.d. 
+\medskip
+\item Un proceso estrictamente estacionario puede no ser estacionario en covarianza, ya que puede no tener momentos de primer y segundo orden finitos. 
+\medskip
+\item \textbf{Ejemplo:} el proceso formado por variables aleatorias independientes e idŽnticamente distribuidas Cauchy.
+
+
+\end{itemize}
+\end{block}\end{frame}
+
+
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Funciones de media y varianza}
+\begin{itemize}
+\item Generalmente se suprime la variable $\omega$ y se escribe $Z(\omega,t)$  simplemente como $Z(t)$ o $Z_t$. Adem‡s el proceso es llamado de valor real si este s—lo toma valores reales.
+\bigskip
+
+\item Para un proceso de valor real ${Z_t : t = 0, \pm1, \pm2, \ldots}$ se define la funci—n de medias del proceso como:
+
+$$\mu_t =E(Z_t)$$
+
+\bigskip
+
+\item La funci—n de varianza
+
+$$\sigma_t^2 =E(Z_t-\mu_t)^2$$
+
+\end{itemize}
+\end{block}\end{frame}
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Funciones de covarianza y correlaci—n}
+\begin{itemize}
+\item La funci—n de covarianza entre $Z_{t_1}$ y $Z_{t_2}$
+
+$$\gamma(t_1,t_2)=E(Z_{t_1}-\mu_{t_1})(Z_{t_2}-\mu_{t_2})$$
+
+\bigskip
+
+\item La funci—n de correlaci—n entre $Z_{t_1}$ y $Z_{t_2}$
+$$\rho(t_1,t_2)= \frac{\gamma(t_1,t_2)}{\sigma_{t_1}\sigma_{t_2}} $$
+\end{itemize}
+\end{block}\end{frame}
+
+
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{itemize}
+\item  Para un proceso estrictamente estacionario $\mu_t = \mu$, siempre que
+  \begin{enumerate} 
+  \item $E(|Z|<\infty)$ 
+  \item $\sigma_t^2 =\sigma^2$, si $E(Z_t^2<\infty)$ ,para todo $t.$
+ \end{enumerate}
+ \bigskip
+ 
+\item Adem‡s dado que $F(z_{t_1},z_{t_2}) = F (z_{t_1+k},z_{t_2+k})$ para cualquier enteros $t_1$, $t_2$ y $k,$
+
+ $$\gamma(t_1,t_2)=\gamma(t_1+k, t_2+k),$$ 
+ $$\rho(t_1,t_2)=\rho(t_1+k, t_2+k)$$
+  
+ Haciendo $t_1=t-k$ y $t_2=t$, se tiene que
+ 
+$$\gamma(t_1,t_2) = \gamma(t-k,t)=\gamma(t,t+k)=\gamma_k$$
+
+$$\rho(t_1,t_2) = \rho(t-k,t)=\rho(t,t+k)=\rho_k$$
+
+\bigskip
+
+As’, para un proceso estrictamente estacionario con primeros dos momentos finitos, la funci—n de covarianza y correlaci—n entre $Z_t$ y $Z_{t+k}$ depende œnicamente de la diferencia $k$ entre los tiempos.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}\frametitle{Conceptos}
+\begin{block}{Proceso DŽbilmente Estacionario}
+\begin{itemize}\justifying
+\bigskip
+\item Un proceso es llamado dŽbilmente estacionario de orden $n$, si todos sus momentos conjuntos hasta de orden n son finitos e invariantes en el tiempo.
+\bigskip
+\item Un proceso dŽbilmente estacionario de segundo orden tendr‡ media y varianza constantes y sus funciones de covarianza y correlaci—n s—lo depender‡n del nœmero de per’odos que separan los tŽrminos del proceso.
+\bigskip
+\item Esta clase de proceso es tambiŽn llamado proceso estacionario en sentido amplio o proceso estacionario en covarianza o simplemente estacionario.
+\bigskip
+
+
+\end{itemize}
+\end{block}\end{frame}
+
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{}
+En la pr‡ctica, generalmente se trabaja con procesos estacionarios en covarianza. Este es un supuesto mucho menos restrictivo que la estacionaridad estricta y m‡s 
+f‡cil de probar en la pr‡ctica.
+\end{block}
+\bigskip
+
+\begin{block}{Ejemplo}
+Considere la serie $$x_t=\sin{(2\pi U t)}, \ \ t=1,2,\ldots,$$
+
+donde $U$ tiene una distribuci—n uniforme en el intervalo $(0,1).$
+\begin{enumerate}
+\item Probar que $x_t$ es dŽbilmente estacionaria.
+\item Probar que $x_t$ no es estrictamente estacionaria. (Ejercicio)
+\end{enumerate}
+
+\end{block}
+\end{frame}
+
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Funciones de autocovarianza y autocorrelaci—n}
+
+Para un proceso estacionario $\{Z_t\}$ escribimos
+
+$$\gamma_k =cov(Z_t,Z_{t+k})=E(Z_t -\mu)(Z_{t+k}-\mu)$$
+y
+
+$$\rho_k=\frac{cov(Zt,Zt+k)}{Var(Z_t)Var(Z_{t+k})} = \frac{\gamma_k}{\gamma_0}$$
+
+\bigskip
+
+donde $\gamma_0 = Var (Z_t) = Var (Z_{t+k})$. Como funci—n de $k$, $\gamma_k$ se denomina la funci—n de autocovarianza y $\rho_k$ la funci—n de autocorrelaci—n (ACF).
+\end{block}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Propiedades}
+\begin{enumerate}
+\item $\gamma_0 =Var(Z_t)$; $\rho_0 =1$
+\bigskip
+
+\item $|\gamma_k|\leq\gamma_0$; $|\rho_k|\leq1$
+\bigskip
+
+\item $\gamma_k =\gamma_{-k}$ ; $\rho_k =\rho_{-k}$, para todo $k.$
+
+\bigskip
+
+\item $\gamma_k$ y $\rho_k$, son semidefinidas positivas en el sentido que
+
+\begin{equation}
+\sum_{i=1}^{n}\sum_{j=1}^{n}\alpha_i\alpha_j\gamma_{|t_i-t_j|\geq0}	
+\end{equation}
+
+ y
+
+\begin{equation}
+\sum_{i=1}^{n}\sum_{j=1}^{n}\alpha_i\alpha_j\rho_{|t_i-t_j|\geq0}	
+\end{equation}
+
+para cualquier $t_1, t_2, \ldots, t_n$ y $\alpha_1,\alpha_2, \ldots, \alpha_n$ reales.
+
+\end{enumerate}
+\end{block}
+\textbf{Demostraci—n:}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Funci—n de autocorrelaci—n parcial}
+\begin{itemize}
+\item Se usa para medir el grado de correlaci—n entre $Z_t$ y $Z_{t+k}$ luego de remover la dependencia lineal con las variables intermedias
+
+$$Corr(Z_t,Z_{t+k} | Z_{t+1}, Z_{t+2},\ldots, Z_{t+k-1})$$
+
+\bigskip
+
+\item Puede ser obtenida considerando el siguiente modelo de
+regresi—n para la variable $Z_{t+k}$ de un proceso de media cero
+
+$$Z_{t+k} =\phi_{k1}Z_{t+k-1}+\phi_{k2}Z_{t+k-2} +\ldots+\phi_{kk}Z_{t}+e_{t+k}$$
+
+con $e_{t+k}$ incorrelado con $Z_{t+k-j}$ para $j\geq 1.$
+
+\bigskip
+
+\item Multiplicando por $Z_{t+k-j}$ y tomando esperanza se tiene
+
+$$\gamma_j = \phi_{k1}\gamma_{j-1}+\phi_{k2}\gamma_{j-2} +\ldots+\phi_{kk}\gamma_{j-k} $$
+
+$$\rho_j = \phi_{k1}\rho_{j-1} +\phi_{k2}\rho_{j-2} +\ldots+\phi_{kk}\rho_{j-k}$$
+
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Funci—n de autocorrelaci—n parcial}
+\begin{itemize}
+\item Para $j = 1, 2, \ldots, k$ se tiene el sistema
+$$\rho_1 = \phi_{k1}\rho_0 +\phi_{k2}\rho_1 +\ldots+\phi_{kk}\rho_{k-1}$$
+$$\rho_2 = \phi_{k1}\rho_1 +\phi_{k2}\rho_0 +\ldots+\phi_{kk}\rho_{k-2}$$
+$$\vdots$$
+$$\rho_k = \phi_{k1}\rho_{k-1} +\phi_{k2}\rho_{k-2} +\ldots+\phi_{kk}\rho_0$$
+
+\item Usando la regla Cramer para $k=1,2,\ldots$ se tiene
+\bigskip
+\begin{center}
+\item $\phi_{11}=\rho_1,$ \ \ \ $\phi_{22}=\frac{\left|\begin{array}{cc}1 & \rho_1 \\\rho_1 & \rho_2\end{array}\right|}{\left|\begin{array}{cc}1 & \rho_1 \\\rho_1 & 1\end{array}\right|}$,  \ \ \ $\phi_{33}=\frac{\left|\begin{array}{ccc}1 & \rho_1 & \rho_1 \\\rho_1 & 1 & \rho_2 \\\rho_2 & \rho_1 & \rho_3\end{array}\right|}{\left|\begin{array}{ccc}1 & \rho_1 & \rho_2 \\\rho_1 & 1 & \rho_1 \\\rho_2 & \rho_1 & 1\end{array}\right|}$
+\end{center}
+\end{itemize}
+\end{block}\end{frame}
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Funci—n de autocorrelaci—n parcial}
+\begin{itemize}
+\item En general
+
+$$\phi_{kk}=\frac{\left|\begin{array}{cccccc}
+1 & \rho_1 & \rho_2 & \ldots & \rho_{k-2} & \rho_1 \\ 
+\rho_1 & 1 & \rho_1 & \ldots & \rho_{k-3} & \rho_2 \\ 
+\vdots & \vdots & \vdots &   & \vdots & \vdots \\ 
+\rho_{k-1} & \rho_{k-2} & \rho_{k-3} & \ldots & \rho_1 & \rho_k
+\end{array}\right|}{\left|\begin{array}{cccccc}
+1 & \rho_1 & \rho_2 & \ldots & \rho_{k-2} & \rho_{k-1} \\
+\rho_{1} & 1 & \rho_1 & \ldots & \rho_{k-3} & \rho_{k-2} \\
+\vdots & \vdots & \vdots &   & \vdots & \vdots \\ 
+\rho_{k-1} & \rho_{k-2} & \rho_{k-3} & \ldots & \rho_1 & 1
+\end{array}\right|}$$
+\bigskip
+\item Como una funci—n de $k$, $\phi_{kk}$ es denominada funci—n de autocorrelaci—n parcial (PACF) entre $Z_t$ y $Z_{t+k}.$
+\end{itemize}
+\end{block}\end{frame}
+
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Proceso ruido blanco, RB}
+\begin{itemize}
+\item Un proceso $\{a_t\}$ es llamado RB si este es una secuencia de v.a. incorreladas de una distribuci—n fija con media constante $E(a_t)=\mu_a$, usualmente asumida como cero, varianza constante $Var(a_t)=\sigma_a^2$ y
+$$\gamma_k=cov(a_t,a_{t+k})=0$$
+
+para todo $k\neq0.$
+\bigskip
+
+\item De este modo, todo proceso RB es estacionario con funci—n de autocovarianza $$\gamma_{k}=\left\{\begin{array}{cc}\sigma_a^2, & k=0 \\
+0, & k\neq0
+\end{array}\right.$$
+
+\end{itemize}
+\end{block}\end{frame}
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Proceso ruido blanco, RB}
+\begin{itemize}
+\item La funci—n de autocorrelaci—n 
+$$\rho_{k}=\left\{\begin{array}{cc}1, & k=0 \\
+0, & k\neq0
+\end{array}\right.$$
+\bigskip
+
+\item La funci—n de autocorrelaci—n parcial
+$$\phi_{kk}=\left\{\begin{array}{cc}1, & k=0 \\
+0, & k\neq0
+\end{array}\right.$$
+\bigskip
+
+\item Un proceso RB se dice Gausiano si su funci—n de distribuci—n conjunta es normal. En adelante se hace referencia solo a procesos ruido blanco Gausianos de media cero.
+
+\end{itemize}
+\end{block}\end{frame}
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Estimaci—n de la media, autocovarianzas y autocorrelaciones de un proceso estacionario}
+\begin{itemize}
+\item Un proceso estacionario est‡ caracterizado por su media $\mu$ , su varianza 
+$\sigma^2$ , sus autocorrelaciones $\rho_k$ , y sus autocorrelaciones parciales $\phi_{kk}.$
+\bigskip
+\item Dada una realizaci—n $Z_1, Z_2,\ldots, Z_T,$ de un proceso estacionario se tienen los siguientes estiamadores:
+\bigskip
+  \begin{enumerate}
+  \item El estimador para la media $\mu_t=E[Z_t]:$ $\bar{Z}=\frac{\sum_{t=1}^{T}Z_t}{T}$
+  \bigskip
+  \item Estimador Funci—n Autocovarianza: $\hat{\gamma}_k=\frac{\sum_{t=1}^{T-k}(Z_t-\bar{Z})(Z_{t+k}-\bar{Z})}{T}$
+    \bigskip
+  \item Estimador Funci—n Autocorrelaci—n: $\hat{\rho}_k=\frac{\hat{\gamma}_k}{\hat{\gamma}_0}$
+
+  \end{enumerate}
+
+
+\end{itemize}
+\end{block}\end{frame}
+
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Distribuci—n muestral de $\hat{\rho}_k$}
+\begin{itemize}
+\item  Para un proceso estacionario Gaussiano y para muestras grandes, bajo el supuesto de que $\rho_k=0$ para $k>m$,
+
+$$\hat{\rho}_k \sim^{aprox} \mathcal{N}(0,Var(\hat{\rho}_k)).$$
+\bigskip
+
+donde la varianza de $\hat{\rho}_k$ es:
+$$Var(\hat{\rho}_k) \approx(1+2\hat{\rho}_1^2+2\hat{\rho}_2^2+\ldots+2\hat{\rho}_m^2 )/T$$
+\bigskip
+\item Bajo el supuesto de que $\rho_k=0$ para $k>0$ (el proceso no est‡ autocorrelacionado),
+
+$$\hat{\rho}_k \sim^{aprox} \mathcal{N}(0, 1/T).$$
+\bigskip
+
+\item 
+
+\end{itemize}
+\end{block}\end{frame}
+
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Distribuci—n muestral de $\phi_{kk}$}
+\begin{itemize}
+\item Para un proceso estacionario Gaussiano y para muestras grandes, bajo el supuesto de que $\rho_k =0$ para todo $k$ (proceso no est‡ autocorrelacionado),
+
+$$\phi_{kk} \sim^{aprox} \mathcal{N}(0, 1/T).$$
+\bigskip
+\item Cuando $k$ es grande con respecto a $T$, $\hat{\gamma}_k$ , y por tanto 
+$\hat{\rho}_k$, son estimados en forma muy imprecisa. Por esta raz—n se sugiere obtener s—lo los primeros $T/4$ estimadores en el an‡lisis de la serie de tiempo.
+\bigskip
+\end{itemize}
+\end{block}
+\begin{alertblock}{}
+Propiedades de los estimadores
+\end{alertblock}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Representaci—n de Medias M—viles (MA):}
+\begin{itemize}
+\item Se puede expresar la serie de tiempo como 
+$$Z_t=\mu+a_t+\psi_1a_{t-1} +\psi_2a_{t-2}+\ldots = \mu+ \sum_{j=0}^{\infty}\psi_ja_{t-j}$$
+
+donde $\sum_{j=0}^{\infty}|\psi_j|<\infty$ y donde $\psi_0=1$. El proceso
+$\{a_t\}$ es un Ruido Blanco.
+
+\medskip
+
+\item Todo proceso estacionario puramente no determin’stico puede ser escrito en la forma anterior (Teorema de Wold). Este proceso tambiŽn es llamado proceso lineal.
+
+\medskip
+
+\item El modelo en forma MA puede ser escrito como:
+
+$$Z_t =\mu+\Psi(B)a_t $$
+
+donde $\Psi(B)=\sum_{j=0}^{\infty}\psi_jB^j$ con $\psi_0=1$
+\medskip
+
+Para que el proceso MA sea estacionario se requiere que
+
+$$\sum_{j=0}^{\infty}|\psi_j|<\infty$$
+
+
+\end{itemize}
+\end{block}\end{frame}
+
+
+
+
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Propiedades del proceso MA estacionario:}
+\begin{itemize}
+\item $E(Z_t) = \mu$
+\bigskip
+
+\item $\gamma_k=\sigma^2\sum_{i=0}^{\infty}\psi_{i}\psi_{i+k}$
+\bigskip
+
+
+\item $Var(Z_t)=\sigma^2\sum_{i=0}^{\infty}\psi_{i}^2$
+
+\bigskip
+\item $\rho_k=\frac{\sum_{i=0}^{\infty}\psi_{i}\psi_{i+k}}{\sum_{i=0}^{\infty}\psi_{i}^2}$
+
+\bigskip
+\item $\gamma_k$ y $\rho_k$\\
+$\bullet$ s—lo dependen de $k$\\
+$\bullet$ son finitas
+
+\end{itemize}
+\end{block}\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}\frametitle{Conceptos} \justifying
+\begin{block}{Representaci—n Autorregresiva (AR):}
+\begin{itemize}
+\item Se puede expresar la serie de tiempo como
+$$Z_t =\theta_0 +\pi_1Z_{t-1} +\pi_2Z_{t-2}+\ldots+a_t$$
+
+o, equivalentemente, usando el operador de rezagos $B,$
+
+$$\pi(B)Z_t =\theta_0 +a_t$$
+
+donde $\pi(B)= 1-\pi_1B-\pi_2B^2 -\pi_3B^3 - \ldots$, con $\sum_{j=0}^{\infty}|\pi_j|<\infty$, y $\pi_0=1.$
+
+\bigskip
+\item Para que un proceso MA estacionario tenga una representaci—n AR, es necesario que las ra’ces del polinomio $\Psi(B)=0$ caigan
+todas fuera del circulo unidad. 
+\bigskip
+\item No todo proceso invertible es necesariamente estacionario. Para que un proceso invertible tenga una representaci—n MA, es necesario que las ra’ces del polinomio $\pi(B)=0$ caigan todas fuera del c’rculo unidad.
+
+\end{itemize}
+\end{block}\end{frame}
+
+
+
+
+
+\section{Modelos para Series de Tiempo}
+
+
+\begin{frame}\frametitle{Modelos para Series de Tiempo} \justifying
+\begin{block}{Modelos}
+\begin{itemize}
+\item Por tanto, para la modelaci—n de un fen—meno se requiere usar un nœmero finito de par‡metros. De aqu’ surgen los modelos:
+\end{itemize}
+\medskip
+
+\begin{alertblock}{Autorregresivos de orden $p$, AR($p$):}
+$$Z_t =\theta_0 +\phi_1Z_{t-1}+\phi_2Z_{t-2} +\ldots+\phi_pZ_{t-p}+a_t$$
+\end{alertblock}
+
+\begin{alertblock}{De Medias M—viles de orden $q$, MA($q$):}
+$$Z_t =\mu+a_t-\theta_1a_{t-1} -\theta_2a_{t-2} -\ldots-\theta_qa_{t-q}$$
+\end{alertblock}
+
+\begin{alertblock}{Autorregresivos y de Medias M—viles, ARMA($p,q$):}
+$$Z_t =\theta_0 +\phi_1Z_{t-1}+\phi_2Z_{t-2} +\ldots+\phi_pZ_{t-p}+a_t -\theta_1a_{t-1} -\theta_2a_{t-2} -\ldots-\theta_qa_{t-q}$$
+\end{alertblock}
+\end{block}
+\end{frame}
+
+
+
+
+
+
+\section{Identificaci—n de Modelos}
+\begin{frame}\frametitle{Identificaci—n} \justifying
+\end{frame}
+
+
+\section{Estimaci—n de Par‡metros}
+\begin{frame}\frametitle{Estimaci—n} \justifying
+\end{frame}
+
+
+\section{Pron—stico}
+\begin{frame}\frametitle{Pron—stico} \justifying
+\end{frame}
+
+
+
+%\textit{incompresibilidad}
+%\begin{align}
+%\begin{equation}\label{energia}
+%\eqref{}
+%\begin{alertblock}
+%\end{alertblock}
+
+
+
+%\section{Referencias} 
+
+%\begin{frame}\frametitle<presentation>{Referencias}
+
+%\begin{thebibliography}{10}
+
+
+%\bibitem{AC} Agresti, A., Caffo, B., 2000. 
+%\newblock {\em Simple and effective confidence intervals for proportions and differences of proportions result from adding two successes and two failures.} 
+%\newblock Am. Stat. 54, 280Ð288.
+
+
+
+%\bibitem{} Kulinskaya, E., Morgenthaler, S., Staudte, R.G., 2010. 
+%\newblock {\em Variance stabilizing the difference of two binomial proportions. }
+%\newblock Am. Stat. 64, 350Ð356.
+
+
+%\bibitem{} Luke A. Prendergast, Robert G. Staudte, 2014.
+%\newblock {\em Better than you think: Interval estimators of the difference of binomial proportions}
+%\newblock Journal of Statistical Planning and Inference 148 (2014) 38-48.
+
+
+%\bibitem{} Morgenthaler, S., Staudte, R., 2013. 
+%\newblock {\em Evidence for alternative hypotheses. In: Becker, C., Fried, R., Kuhnt, S. (Eds.), Robustness and Complex Data Structures; a Festschrift in Honour of Ursula Gather.}
+%\newblock Springer, Berlin, Heidelberg, pp. 315Ð329.
+
+
+%\bibitem{} Newcombe, R., 1998. 
+%\newblock {\em Interval estimation for the difference between independent proportions: comparison of eleven methods.} 
+%\newblock Stat. Med. 17, 873Ð890. Stapleton, A., Latham, R.H., Johnson, C., Stamm, W.E., 1990. Postcoital antimicrobial prophylaxis for recurrent urinary tract infection. J. Am. Med. Assoc. 264,
+%703Ð706.
+
+%\end{thebibliography}
+%\end{frame}
+
+
+\end{document}
